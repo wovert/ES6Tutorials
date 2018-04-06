@@ -40,4 +40,29 @@ webpack -- 编译工具 --> Babel -- 浏览器端兼容包--> ES5-shim/Babel-pol
 
 
 ### 脚手架工具
+[html-bundler](https://github.com/be-fe/html-bundler)
+- 解决 babel 和 webpack 配置比较繁琐的问题
+- 性能与日志优化，html/css/图片等处理
+- Dev Server 和环境配置 
 
+- 安装
+`cnpm i html-bundler -g`
+
+- create project
+`hb create es6-passport -w`
+
+- setup packages
+- `cd es6-password && cnpm install`
+
+- run server
+`hb dev`
+
+####  setup jquery
+`cnpm i query -D`
+- webpack.dll.js
+`const vendors = [
+  'jquery'
+];`
+- 打包
+`npm run dll`
+src/lib/vendors.js

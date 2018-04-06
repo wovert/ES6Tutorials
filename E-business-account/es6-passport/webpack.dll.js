@@ -2,7 +2,9 @@ const webpack = require('webpack');
 const path = require('path');
 
 const vendors = [
-  'jquery'
+  //'jquery'
+  'es5-shim',
+  'babel-polyfill'
 ];
 
 const options = {

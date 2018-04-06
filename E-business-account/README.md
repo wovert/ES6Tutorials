@@ -66,3 +66,46 @@ webpack -- 编译工具 --> Babel -- 浏览器端兼容包--> ES5-shim/Babel-pol
 - 打包
 `npm run dll`
 src/lib/vendors.js
+
+## 环境准备
+1. cnpm i html-bundler -g
+2. hb create project -w
+3. cd project && cnpm install
+
+- 安装必要的 polyfill
+- 加入 gulp-file-include 包
+
+cnpm i es5-shim --save-dev
+cnpm i babel-polyfill --save-dev
+
+- webpack.dll.js 加入上面两个依赖
+const vendors = [
+  'es5-shim',
+  'babel-polyfill'
+];
+
+- 生成 vendors
+`npm run dll`
+
+
+### gulp-file-include
+> header，footer等文件内容基本不变，修改内容是，其他页面引入的都需要重新修改。实际上使用模板。结合 gulp 和 webpack。
+只用 webpack 的时候，修改 css之后，webpack 重新打包一边，影响开发效率。
+
+
+- 安装：`cnpm i gulp-file-include -D`
+
+- 配置 gulp-file-include
+html-bundler.config.js 文件里引入 `var fileInclude = require('gulp-file-include');` destMode/devMod->cutom -> html : [{func: fileInclude, opts: { prefix: '@@', basePath: '@file'}}]
+
+- index.html 导入模板文件
+`@@inculde('./templates/header.html', {})
+<h1>Hello World!</h1>
+@@inculde('./templates/footer.html', {})`
+
+- 启动服务
+`hb dev`
+
+
+
+

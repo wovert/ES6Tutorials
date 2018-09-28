@@ -45,3 +45,24 @@ console.log(a);
   }
 # npm run build
 ```
+
+## 声明方式
+
+``` shell
+# vim index.js
+  var a = 'wovert';
+  let me = 2;
+  const PI = 3.1415926;
+  {
+    var a = 'change';
+  }
+  console.log(a); // wovert
+
+  PI = 20;
+
+  for(let i=0; i<10; i++) {
+    console.log(i);
+  }
+  console.log(i);
+```
+

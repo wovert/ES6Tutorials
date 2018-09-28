@@ -66,3 +66,54 @@ console.log(a);
   console.log(i);
 ```
 
+## 结构赋值
+
+> 从数组和对象中提取元素值，对变量进行赋值
+
+### 数组结构赋值
+
+``` js
+// let a = 0;
+// let b = 1;
+// let c = 2;
+
+let [a,[b,c]] = [0,[1,2]];
+
+let [foo=true] = []; // foo 默认值
+console.log(foo); // true
+
+let [x,y='微明'] = ['wovert'];
+console.log(x+y); // wovert微明
+
+let [x1,y1='微明'] = ['wovert',undefined];
+console.log(x1+y1); // wovert微明
+
+let [x2,y2='微明'] = ['wovert',null];
+console.log(x2+y2); // wovertnull
+```
+
+### 对象结构赋值
+
+``` js
+let {foo,bar} = {bar: '微明',foo:'wovert'};
+console.log(foo+bar); // wovert微明
+
+let a;
+// {a} = {a:'wovert'}; 错误
+
+let b;
+({b} = {b:'wovert'}); 
+console.log(b); // wovert
+```
+
+### 字符串结构赋值
+
+``` js
+const [a,b,c,d,e,f] = 'wovert';
+console.log(a);
+console.log(b);
+console.log(c);
+console.log(d);
+console.log(e);
+console.log(f);
+```

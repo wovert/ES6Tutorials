@@ -117,3 +117,43 @@ console.log(d);
 console.log(e);
 console.log(f);
 ```
+
+## 对象扩展运算符
+
+```js
+function wovert(...args) {
+  console.log(args); // [1,2,3]
+}
+
+wovert(1,2,3);
+
+let arr1 = ['www','wovert','com'];
+let arr2 = arr1; // 引用赋值
+console.log(arr2); // [ 'www', 'wovert', 'com' ]
+arr2.push('cg');
+console.log(arr1); // [ 'www', 'wovert', 'com', 'cg' ]
+
+let arr3 = [...arr1];
+arr3.push('add new element');
+console.log('arr1:', arr1); // arr1: [ 'www', 'wovert', 'com', 'cg' ]
+console.log('arr2:', arr2); // arr2: [ 'www', 'wovert', 'com', 'cg' ]
+console.log('arr3:', arr3); // arr3: [ 'www', 'wovert', 'com', 'cg', 'add new element' ]
+```
+
+## rest 运算符
+
+``` js
+function wovert(first, ...args) {
+  console.log(args.length); // 9
+  // for(let i=0; i<args.length; i++) {
+  //   console.log(args[i]);
+  // }
+
+  // 简化循环流程：效率比上面循环for更好
+  for(let val of args) {
+    console.log(val);
+  }
+}
+
+wovert(1,2,3,4,5,6,7,8,9,10);
+```

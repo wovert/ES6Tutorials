@@ -3,6 +3,8 @@
 - dist是编译后的文件，压缩版
 - src是源码文件
 - 压缩源（src）文件，生成压缩包到（dest），dest一般和src配对出现
+- index.html
+  - `<script src="./dist/index.js"></script>`
 
 ## 实例
 
@@ -156,4 +158,37 @@ function wovert(first, ...args) {
 }
 
 wovert(1,2,3,4,5,6,7,8,9,10);
+```
+
+## 字符串模板
+
+``` shell
+安装 live-server(前段服务器)
+# cnpm install -g live-server
+# vim index.html
+  <script src="index.js"></script>
+# vim index.js
+  let a = 1;
+  let b = 2;
+  let wovert = '微明';
+  let blog = `这是我的博客名：${wovert}
+  正在测试字${a+b}符串模版
+  `;
+  console.log(blog);
+# npm run build
+# node ./dist/index
+```
+
+### 字符串查找
+
+``` js
+let [a,b] = [1,2];
+let wovert = '微明';
+let blog = `这是我的博客名：${wovert}
+正在测试字${a+b}符串模版`;
+console.log(blog.indexOf('博客') > 0); // true
+console.log(blog.includes('博客')); // true 是否包含
+console.log(blog.startsWith('这是')); // true
+console.log(blog.endsWith('模版')); // true
+console.log('a'.repeat(5)); // aaaaa
 ```

@@ -192,3 +192,60 @@ console.log(blog.startsWith('这是')); // true
 console.log(blog.endsWith('模版')); // true
 console.log('a'.repeat(5)); // aaaaa
 ```
+
+## 数字
+
+``` js
+// 二进制:以0B前缀
+let binary = 0B010101;
+console.log(binary); // 21
+
+// 二进制：以0o前缀
+let octal = 0o666;
+console.log(octal); // 438
+
+// 数字判断
+
+let a = 11/4;
+
+// 判断是否为数字
+console.log(Number.isFinite(a)); // true
+console.log(Number.isFinite('wovert')); // false
+console.log(Number.isFinite(NaN)); // false
+console.log(Number.isFinite(undefined)); // false
+
+// NaN
+console.log(Number.isNaN(NaN)); // ture
+console.log(Number.isNaN(1)); // false
+
+// ES6判断是否为数字
+let n = 918.1;
+console.log(Number.isInteger(n)); // 判断是否为整数
+console.log(Number.parseInt(n)); // 918
+console.log(Number.parseFloat(n)); // 918.1
+
+// 最大整数和最小整数
+let w = Math.pow(2,53) - 1; // 2^53-1
+console.log(w); // 9007199254740991
+console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
+console.log(Number.MIN_SAFE_INTEGER); // -9007199254740991
+console.log(Number.isSafeInteger(w+1)); // false, 是否为安全整数
+```
+
+## 数组
+
+### json 数组格式
+
+``` js
+let json = {
+  '0':'html',
+  '1':'css',
+  '2':'js',
+  length: 3
+}
+let arr = Array.from(json);
+console.log(arr);
+```
+
+### Array.of 方法
+

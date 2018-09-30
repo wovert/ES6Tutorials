@@ -1,9 +1,25 @@
-let [a,b] = [1,2];
-let wovert = '微明';
-let blog = `这是我的博客名：${wovert}
-正在测试字${a+b}符串模版`;
-console.log(blog.indexOf('博客') > 0); // true
-console.log(blog.includes('博客')); // true 是否包含
-console.log(blog.startsWith('这是')); // true
-console.log(blog.endsWith('模版')); // true
-console.log('a'.repeat(5)); // aaaaa
+// 老式字符串转换数组 '[1,2,3]'
+let str = '[1,2,3]';
+console.log(eval(str)); // [1,2,3]
+
+let arr = Array.of(2,3,4);
+console.log(arr); // [2,3,4]
+
+console.log(Array.of('a','b','c')); // ['a','b','c']
+
+// arr.find(ele) 查找ele元素并返回
+
+let nums = [1,2,3,4,5,6,7,8,9];
+// value: 元素值，index: 索引，arr:当前数组引用
+console.log(nums.find(function(value, index, arr){
+  return value > 10; 
+})); // undefined
+
+console.log(nums.find(function(value, index, arr){
+  return value > 5; 
+})); // 6
+
+let names = ['wovert','lingyima'];
+console.log(names.find(function(value,index,names){
+  return value == 'wovert';
+})); // wovert

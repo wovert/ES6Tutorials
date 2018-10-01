@@ -1,27 +1,49 @@
+// ES5 只能在顶部声明严谨模式
 'use strict';
 
-// 老式字符串转换数组 '[1,2,3]'
-var str = '[1,2,3]';
-console.log(eval(str)); // [1,2,3]
+function add(a) {
+  var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
-var arr = Array.of(2, 3, 4);
-console.log(arr); // [2,3,4]
+  if (a == 0) {
+    throw new Error('A is Error');
+  }
+  return a + b;
+}
 
-console.log(Array.of('a', 'b', 'c')); // ['a','b','c']
+function add2(a) {
+  // ES6 可以在此处声明严谨模式
+  'use strict';
 
-// arr.find(ele) 查找ele元素并返回
+  if (a == 0) {
+    throw new Error('A is Error');
+  }
+  return a + b;
+}
 
-var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-// value: 元素值，index: 索引，arr:当前数组引用
-console.log(nums.find(function (value, index, arr) {
-  return value > 10;
-})); // undefined
+// 获得参数参数个数
+function add3(a) {
+  var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
-console.log(nums.find(function (value, index, arr) {
-  return value > 5;
-})); // 6
+  return a + b;
+}
 
-var names = ['wovert', 'lingyima'];
-console.log(names.find(function (value, index, names) {
-  return value == 'wovert';
-})); // true
+var add4 = function add4(a) {
+  var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+  // 此处不能使用new构造函数
+  console.log('wovert');
+  return a + b;
+};
+var add5 = function add5(a) {
+  var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  return a + b;
+};
+
+// console.log(add(0));
+// console.log(add2(1,2));
+
+// add3.length 指向的 没有默认值得形参a
+// console.log(add3(add3.length));
+
+console.log(add4(1, 2));
+console.log(add5(1, 2));

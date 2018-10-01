@@ -249,3 +249,107 @@ console.log(arr);
 
 ### Array.of 方法
 
+``` js
+// 老式字符串转换数组 '[1,2,3]'
+let str = '[1,2,3]';
+console.log(eval(str)); // [1,2,3]
+
+let arr = Array.of(2,3,4);
+console.log(arr); // [2,3,4]
+
+console.log(Array.of('a','b','c')); // ['a','b','c']
+
+// arr.find(ele) 查找ele元素并返回
+
+let nums = [1,2,3,4,5,6,7,8,9];
+// value: 元素值，index: 索引，arr:当前数组引用
+console.log(nums.find(function(value, index, arr){
+  return value > 10; 
+})); // undefined
+
+console.log(nums.find(function(value, index, arr){
+  return value > 5; 
+})); // 6
+
+let names = ['wovert','lingyima'];
+console.log(names.find(function(value,index,names){
+  return value == 'wovert';
+})); // wovert
+
+// fill
+let  arrs = ['wovert', '微明','com'];
+
+// 全部填充或替换
+arrs.fill('web',1,3);
+console.log(arrs); // ['wovert','web','web']
+
+// 数组循环
+for(let item of arrs) {
+  console.log(item);
+}
+
+// 遍历索引
+for(let item of arrs.keys()) {
+  console.log(item); 
+}
+
+// 遍历索引键值对儿
+for(let [index,value] of arrs.entries()) {
+  console.log(`${index}=${value}`);
+}
+
+// 手动遍历
+// 返回迭代器
+let list = arrs.entries();
+console.log(list.next().value); // [ 0, 'wovert' ]
+console.log('----------');
+console.log(list.next().value); [ 1, 'web' ]
+console.log('----------');
+console.log(list.next().value); [ 2, 'web' ]
+console.log('----------');
+console.log(list.next().value); // undefined
+console.log('----------');
+```
+
+## 箭头函数
+
+``` js
+// ES5 只能在顶部声明严谨模式
+'use strict';
+function add(a,b=1) {
+  if(a==0) {
+    throw new Error('A is Error');
+  }
+  return a + b;
+}
+
+function add2(a) {
+  // ES6 可以在此处声明严谨模式
+  'use strict'
+  if(a==0) {
+    throw new Error('A is Error');
+  }
+  return a + b;
+}
+
+// 获得参数参数个数
+function add3(a,b=1) {
+  return a + b;
+}
+
+var add4 = (a,b=1) => {
+  // 此处不能使用new构造函数
+  console.log('wovert');
+  return a + b;
+}
+var add5 = (a,b=1) => a + b;
+
+console.log(add(0)); // Error
+console.log(add2(1,2)); // Error
+
+// add3.length 指向的 没有默认值得形参a
+console.log(add3(add3.length));
+
+console.log(add4(1,2)); // 3
+console.log(add5(1,2)); // 3
+```

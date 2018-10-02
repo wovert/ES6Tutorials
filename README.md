@@ -354,3 +354,136 @@ console.log(add4(1,2)); // 3
 console.log(add5(1,2)); // 3
 ```
 
+## 对象赋值
+
+``` js
+let name = 'a';
+let age = 20;
+let obj = {name,age};
+console.log(obj); // {name:'a',ag:20}
+
+
+// key值得构建
+let key = 'seckill';
+var obj2 = {
+  [key] : 'web'
+};
+console.log(obj2); // {seckill: 'web'}
+
+// 自定义对象方法
+let obj3 = {
+  add: function(a,b) {
+    return a + b;
+  }
+}
+console.log(obj3.add(1,2)); // 3
+
+// is()
+let o = {name:'wovert'};
+let ob = {name:'wovert'};
+
+// es5比较对象值
+
+// 同值相等，is严格相等
+console.log(o.name === ob.name); // true
+console.log(Object.is(o.name,ob.name)); // true
+
+console.log(+0===-0); // true
+console.log(NaN===NaN); // flase
+console.log(Object.is(+0,-0)); // false
+console.log(Object.is(NaN, NaN)); // true
+
+// assign 合并对象
+let x = {x:'wovert'};
+let y = {y:'com'};
+let z = {z:'lingyima'};
+let xyz = Object.assign(x,y,z); // { x: 'wovert', y: 'com', z: 'lingyima' }
+console.log(xyz);
+```
+
+## Symbol
+
+``` js
+let s = new String;
+let n = new Number;
+let b = new Boolean;
+let a = new Array;
+let o = new Object;
+let sm = Symbol();
+
+console.log(typeof(s)); // object
+console.log(typeof(n)); // object
+console.log(typeof(b)); // object
+console.log(typeof(a)); // object
+console.log(typeof(o)); // object
+console.log(typeof(sm)); // symbol
+
+let wovert = Symbol('微明');
+console.log(wovert); // Symbol(微明)
+console.log(wovert.toString()); // Symbol(微明) 已经转为字符串
+
+let x = Symbol();
+let obj = {
+  [x]: 'wovert'
+}
+console.log(obj[x]); // wovert
+obj[x] = 'web';
+console.log(obj[x]); // web
+
+let ob = {
+  name: 'wovert',
+  skill: 'web'
+}
+let age = Symbol();
+ob[age] = 18;
+console.log(ob); // { name: 'wovert', skill: 'web', [Symbol()]: 18 }
+
+// 只能遍历 wovert 和 web, age受保护所以不再遍历
+for(let item in ob) {
+  console.log(ob[item]);
+}
+
+console.log(ob[age]); // 18
+```
+
+## Set集合
+
+``` js
+// Set集合
+// Set集合元素不能重复，会去重
+
+let s = new Set(['wovert','微明','web']);
+console.log(s);
+
+s.add('wovert');
+console.log(s); // Set { 'wovert', '微明', 'web' }
+
+// has是否存在元素
+console.log(s.has('wovert')); // true
+
+// 删除某个元素
+console.log(s.delete('wovert')); // true
+
+// for ... of
+for(let item of s) {
+  console.log(item);
+}
+
+// forEach
+s.forEach(value=>console.log(value));
+
+// size
+console.log(s.size); // 2
+
+// 删除所有
+s.clear();
+
+// WeakSet（不允许重复值）
+
+let wObj = new WeakSet(); // 不能直接赋值
+let obj8 = {a:'wovert',b:'com'};
+let obj9 = obj8;
+wObj.add(obj8);
+wObj.add(obj9);
+console.log(wObj);
+```

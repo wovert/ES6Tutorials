@@ -1,39 +1,37 @@
+// Set集合
+// Set集合元素不能重复，会去重
 
-// 对象的函数解构 json
+let s = new Set(['wovert','微明','web']);
+console.log(s);
 
-let json = {
-  a: 'wovert',
-  b: '微明'
+s.add('wovert');
+console.log(s); // Set { 'wovert', '微明', 'web' }
+
+// has是否存在元素
+console.log(s.has('wovert')); // true
+
+// 删除某个元素
+console.log(s.delete('wovert')); // true
+
+// for ... of
+for(let item of s) {
+  console.log(item);
 }
-function fun({a,b='默认参数'}) {
-  console.log(a,b); // wovert 微明
-}
-fun(json);
 
-// in 用法:是否存在对象属性
-let obj = {
-  a: 'wovert',
-  b: '微明',
-  c: null,
-}
-console.log('a' in obj); // true
-console.log('c' in obj); // true
-console.log('d' in obj); // false
+// forEach
+s.forEach(value=>console.log(value));
 
-let arr = [,'',null,];
-console.log(arr.length); // 3
-console.log(0 in arr); // false
-console.log(1 in arr); // true
-console.log(2 in arr); // true
+// size
+console.log(s.size); // 2
 
-// 遍历数组
+// 删除所有
+s.clear();
 
-let n = ['wovert', 'com', 'lingyima'];
-n.forEach((value, index)=> console.log(index,value));
-n.filter(x=> console.log(x));
-n.some(x=> console.log(x));
-console.log(n.map(x=>'web')); // 所有元素替换成web
+// WeakSet（不允许重复值）
 
-// 数组转换成字符串
-console.log(n.toString()); // wovert,com,lingyima
-console.log(n.join('|')); // wovert|com|lingyima
+let wObj = new WeakSet(); // 不能直接赋值
+let obj8 = {a:'wovert',b:'com'};
+let obj9 = obj8;
+wObj.add(obj8);
+wObj.add(obj9);
+console.log(wObj);
